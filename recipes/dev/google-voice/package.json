@@ -1,7 +1,7 @@
 {
   "id": "google-voice",
   "name": "Google Voice",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Google Voice",
   "main": "index.js",
   "author": "Behind The Math <behindthemath@gmail.com>",
