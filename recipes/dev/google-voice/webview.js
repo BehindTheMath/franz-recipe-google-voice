@@ -1,6 +1,7 @@
 module.exports = Franz => {
-    function parseIntOrZero(val) {
-        return isNaN(parseInt(val)) ? 0 : parseInt(val);
+    function parseQuery(query) {
+        const el = document.querySelector(query);
+        return (el && parseInt(el.innerHTML)) || 0;
     }
 
     function getMessages() {
@@ -9,12 +10,12 @@ module.exports = Franz => {
 
         if (el) {
             // Legacy version of Google Voice
-            count = parseIntOrZero(el.innerHTML.replace(/[\(\) ]/gi,""));
+            count = parseInt(el.innerHTML.replace(/[\(\) ]/gi,"")) || 0;
         } else {
             // Updated version of Google Voice
-            const count_messages = parseIntOrZero(document.querySelector('gv-nav-button[label="Messages"] div[aria-label="Unread count"]').innerHTML);
-            const count_calls = parseIntOrZero(document.querySelector('gv-nav-button[label="Calls"] div[aria-label="Unread count"]').innerHTML);
-            const count_voicemails = parseIntOrZero(document.querySelector('gv-nav-button[label="Voicemail"] div[aria-label="Unread count"]').innerHTML);
+            const count_messages = parseQuery('gv-nav-tab[tooltip="Messages"] div[aria-label="Unread count"]');
+            const count_calls = parseQuery('gv-nav-tab[tooltip="Calls"] div[aria-label="Unread count"]');
+            const count_voicemails = parseQuery('gv-nav-tab[tooltip="Voicemail"] div[aria-label="Unread count"]');
             count = count_messages + count_calls + count_voicemails;
         }
 
