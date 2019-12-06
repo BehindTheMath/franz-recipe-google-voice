@@ -2,6 +2,6 @@
 
 module.exports = Franz => class GoogleVoice extends Franz {
   overrideUserAgent() {
-    return window.navigator.userAgent.replace(/(Franz|Electron|Chrome|AppleWebKit|Safari)([^\s]+(\s|$))/g, '');
+    return window.navigator.userAgent.replace(/(Franz|Electron|Chrome|AppleWebKit|Safari)([^\s]+(\s|$))/g, '') + " Firefox/70.0";
   }
 }
